@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
+import { parseInputFile } from '../../lib/utils.js';
 
-const measurements = readFileSync("./solutions/day-1/input.txt").toString().split('\n').map(Number);
+const measurements = parseInputFile("./solutions/day-1/input.txt").split('\n').map(Number);
 
 const addReducer = (accumulator, val) => accumulator + val;
 
