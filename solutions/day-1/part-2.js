@@ -1,22 +1,21 @@
 import { parseInputFile } from '../../lib/utils.js';
 
-const measurements = parseInputFile("./solutions/day-1/input.txt").split('\n').map(Number);
+const measurements = parseInputFile('./solutions/day-1/input.txt').split('\n').map(Number);
 
 const addReducer = (accumulator, val) => accumulator + val;
 
-let numIncreases = 0
+let numIncreases = 0;
 
 /**
  * again - i starts at 1 because we can't compare the first window to the previous
  * we end at `measurements.length - 2` because we need a full window for the last value
  */
-for (let i = 1; i < (measurements.length - 2); i++) {
+for (let i = 1; i < measurements.length - 2; i++) {
     const currentWindowSum = measurements.slice(i, i + 3).reduce(addReducer, 0);
     const prevWindowSum = measurements.slice(i - 1, i + 2).reduce(addReducer, 0);
     if (currentWindowSum > prevWindowSum) {
-        numIncreases++
+        numIncreases++;
     }
 }
 
-
-console.log("number of increases: ", numIncreases)
+console.log('number of increases: ', numIncreases);

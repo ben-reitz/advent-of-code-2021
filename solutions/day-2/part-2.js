@@ -11,16 +11,17 @@ let aim = 0;
  * [ ['forward', 8], ['up', 2] ... ]
  * @type {[string,number][]}
  */
-const instructions = input.split('\n')
-    .map(command => command.split([' ']))
-    .map(([dir, value]) => [dir, Number(value)])
+const instructions = input
+    .split('\n')
+    .map((command) => command.split([' ']))
+    .map(([dir, value]) => [dir, Number(value)]);
 
-for(let command of instructions) {
+for (let command of instructions) {
     const [direction, value] = command;
-    switch(direction) {
+    switch (direction) {
         case 'forward':
             horizontal += value;
-            depth += aim * value
+            depth += aim * value;
             break;
         case 'up':
             aim -= value;
@@ -33,7 +34,7 @@ for(let command of instructions) {
     }
 }
 
-console.log('aim:        ', aim)
-console.log('horizontal: ', horizontal)
-console.log('depth:      ', depth)
-console.log('multiplied: ', depth * horizontal)
+console.log('aim:        ', aim);
+console.log('horizontal: ', horizontal);
+console.log('depth:      ', depth);
+console.log('multiplied: ', depth * horizontal);

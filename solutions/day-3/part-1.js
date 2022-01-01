@@ -1,6 +1,6 @@
 import { parseInputFile } from '../../lib/utils.js';
 
-const input = parseInputFile('./solutions/day-3/input.txt')
+const input = parseInputFile('./solutions/day-3/input.txt');
 
 const diagnostics = input.split('\n');
 
@@ -22,7 +22,7 @@ const calculateGamma = (readings) => {
     let gammaReading = '';
 
     bitWeights.forEach((weighting, bitIndex) => {
-        switch(Math.sign(weighting)) {
+        switch (Math.sign(weighting)) {
             case -1:
                 gammaReading = gammaReading.concat('0');
                 break;
@@ -30,23 +30,23 @@ const calculateGamma = (readings) => {
                 gammaReading = gammaReading.concat('1');
                 break;
             case 0:
-                throw new Error(`Equal numbers of 1s and 0s in index ${bitIndex}`)
+                throw new Error(`Equal numbers of 1s and 0s in index ${bitIndex}`);
             default:
-                throw new Error(`Invalid case: ${weighting}`)
+                throw new Error(`Invalid case: ${weighting}`);
         }
-    })
+    });
 
     return gammaReading;
-}
+};
 
 const gamma = calculateGamma(diagnostics);
 
 /**
  * The sigma value is just the inverse of every bit so the XOR operator should cover us off here (^)
  */
-const sigma = gamma.replace(/[10]/g, bit => bit ^ 1);
+const sigma = gamma.replace(/[10]/g, (bit) => bit ^ 1);
 
-console.log(`gamma (decimal): ${gamma} (${parseInt(gamma, 2)})`)
-console.log(`sigma (decimal): ${sigma} (${parseInt(sigma, 2)})`)
+console.log(`gamma (decimal): ${gamma} (${parseInt(gamma, 2)})`);
+console.log(`sigma (decimal): ${sigma} (${parseInt(sigma, 2)})`);
 
-console.log(`final answer: ${parseInt(gamma, 2) * parseInt(sigma, 2)}`)
+console.log(`final answer: ${parseInt(gamma, 2) * parseInt(sigma, 2)}`);
